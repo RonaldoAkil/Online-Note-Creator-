@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+	body{
+	background-color: #f78a83;
+	color: black;
+	margin-top: 20px;
+	}
+
+	#container_1{
+	width: 90%;
+	margin: 20px auto;
+	padding: 15px;
+	border: 2px solid;
+	text-align: center;
+	}
+
+	h1{
+	font-family: 'Consolas';
+	text-align: center;
+	font-size: 40px;
+	}
+
+	#title,#message{
+	margin: 20px auto;
+	font-family: 'Consolas';
+	font-size: 20px;
+	border-radius: 2px;
+	border-color: gray;
+	background: none;
+	display: block;
+	}
+
+	#but1 {
+	margin: 20px auto;
+	font-family: 'Consolas';
+	font-size: 20px;
+	border-radius: 2px;
+	border-color: gray;
+	background: none;
+	display: block;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+	}
+
+	#container_2{
+		text-align: center;
+        margin-left: 10px;
+        margin-bottom: 50px;
+        margin-right: 40px;
+        background-color: transparent;
+        font-size: 18px;
+        font-family: lucida sans;
+        font-style: italic;
+        padding-left: 40px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+	}
+
+	#container_2:nth-child(4n+1){
+		clear: left;
+	}
+
+	#textNote{
+	position: relative;
+	background-color: #ffff80;
+	min-height: 200px;
+	min-width: 150px;
+	font-size: 16px;
+    font-family: lucida sans;
+    font-style: italic;
+	margin: 20px auto;
+	box-shadow: 10px 10px 30px #BBBBBB;
+	display: inline-block;
+	-webkit-transform: rotate(-4deg);
+    -moz-transform: rotate(-4deg);
+    -o-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+    border-bottom-right-radius: 60px 15px;
+	}
+
+	#closeBut{
+		border-radius: 10px;
+        padding-left: 20px;
+        border: 2px solid;
+        border-color: #039be5; 
+        color: black;
+        padding: 6px 10px;
+        font-size: 14px;
+        -webkit-transition-duration: 0.4s; 
+        transition-duration: 0.4s;
+        cursor: pointer; 
+        position: relative;
+        bottom: 200px;
+        right: 50px;
+	}
+
+	#closeBut:hover{
+		background-color: transparent;
+        border-color: transparent;
+        opacity: 50%;
+        color: black;
+	}
+
+</style>
+
+<script type="text/javascript">
+	function DynamicTextBox(value){
+		 return  '<textarea id="textNote">' + value + '</textarea>' +
+           		 '<input type="button" id="closeBut" value="X" onclick="RemoveTextBox(this)" />'
+	}
+
+
+	function noteCreate(){
+		var x = document.getElementById("message").value;
+		var y = document.createElement('DIV');
+		y.innerHTML = DynamicTextBox(x);
+		y.style.display="inline";
+		y.style.margin="20px";
+		document.getElementById("container_2").appendChild(y);
+		document.getElementById("message").value=" ";
+	}
+
+	function RemoveTextBox(y){
+		document.getElementById("container_2").removeChild(y);
+	}
+
+
+</script>
+
+<head>
+	<title>Online Notes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<div id="container_1">
+		<h1>NOTE CREATOR</h1>
+		<input placeholder="title" id="title">
+		<textarea placeholder="message" id="message"></textarea>
+		<input type="button" id="but1" value="Create Note" onclick="noteCreate()">
+	</div>
+	<div id="container_2"> </div>
+
+</body>
+</html>
